@@ -328,15 +328,21 @@
             navUl.classList.toggle('active');
         }
 
-        let likeCount = 0;
+        let likeCount = parseInt(localStorage.getItem('likeCount')) || 0;
 
         function incrementLike() {
             likeCount++;
+            localStorage.setItem('likeCount', likeCount);
             document.getElementById('likeCount').textContent = likeCount;
             const likeButton = document.getElementById('likeButton');
             likeButton.disabled = true;
             likeButton.textContent = "Liked";
         }
+
+        // On page load, retrieve and display the stored like count
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('likeCount').textContent = likeCount;
+        });
     </script>
 </body>
 </html>
