@@ -1,348 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROYAL_OF_ILLEGAL.com</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+    <title>ROYAL_OF_ILLEGAL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background: #f5f7fa;
+            background: linear-gradient(270deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+            background-size: 1400% 1400%;
+            animation: rainbow 15s ease infinite;
         }
 
-        header {
-            background: #fff;
-            padding: 20px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        @keyframes rainbow {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5em;
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #0ef;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            display: inline-block;
-            padding: 10px;
-            border-radius: 50%; /* Makes it circular */
-            background-color: #fff; /* Background color */
-            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active {
-            background-color: #007bff; /* Background color on hover or active */
-            color: #fff; /* Text color on hover or active */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect on click */
-        }
-
-        .btn-download {
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid #007bff;
-            color: #007bff;
-            border-radius: 5px;
-        }
-
-        .hero {
-            background: linear-gradient(to right, #00c6ff, #0072ff);
-            color: #fff;
-            padding: 60px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .hero-text {
-            max-width: 50%;
-        }
-
-        .hero-text p {
-            margin: 10px 0;
-        }
-
-        .hero-text h1 {
-            font-size: 3em;
-            margin: 20px 0;
-        }
-
-        .highlight {
-            color: #00c6ff;
-            background: #fff;
-            padding: 0 10px;
-            border-radius: 5px;
-        }
-
-        .hero-buttons a {
-            text-decoration: none;
-            margin-right: 10px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #007bff;
-            color: #fff;
-        }
-
-        .btn-secondary {
-            border: 1px solid #fff;
-            color: #fff;
-        }
-
-        .hero-image img {
-            border-radius: 50%;
-            max-width: 200px;
-        }
-
-        footer {
-            background: #fff;
-            padding: 20px 0;
+        /* Header1 */
+        .header1 {
+            background-color: #333;
+            color: #5AEBFE;
+            padding: 20px;
             text-align: center;
-        }
-
-        .conteudo {
-            display: inline-flex;
-            border-bottom: 4px solid #EFEFEF;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-        .conteudo img {
-            width: 60px;
-            filter: drop-shadow(0px 0px 1px #4b4b50);
-            animation: flutuar 3s linear infinite;
-        }
-
-        @keyframes flutuar {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-23px);
-            }
-        }
-
-        .conteudo img:nth-child(2) {
-            animation-delay: .2s;
-        }
-
-        .conteudo img:nth-child(3) {
-            animation-delay: .4s;
-        }
-
-        .conteudo img:nth-child(4) {
-            animation-delay: .6s;
-        }
-
-        .conteudo img:nth-child(5) {
-            animation-delay: .85s;
-        }
-
-        .social-links a {
-            text-decoration: none;
-            color: #007bff;
-            margin: 0 10px;
-        }
-
-        .like-container {
-            display: flex;
-            align-items: center;
-            margin-left: 20px;
-        }
-
-        .like-button {
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 1em;
+        }
+
+        .header1 img {
+            width: 50px;
+            height: 50px;
             margin-right: 10px;
         }
 
-        .like-button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+        .header1 h1 {
+            margin: 0;
         }
 
-        .like-count {
-            font-size: 1em;
-            color: #007bff;
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #007BFF;
+            padding: 10px;
+            color: #5AEBFE;
+            position: relative;
         }
 
-        /* Media Queries for Specific Mobile Sizes */
-        @media (max-width: 414px) {
-            .container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
 
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
+        .navbar li {
+            margin: 0 15px;
+        }
 
-            .hero-text {
-                max-width: 100%;
-            }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-            .hero-image {
-                margin-top: 20px;
-            }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
 
-            nav ul {
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+        }
+
+        .navbar.open ul {
+            display: block;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container1,
+        .container2 {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        .profile-img {
+            border-radius: 50%;
+            width: 130px;
+            height:130px;
+        }
+
+        .profile-name {
+            margin: 10px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profile-title {
+            color: #ccc;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: #007BFF;
+            font-size: 24px;
+        }
+
+        .info-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .info-subtitle {
+            font-size: 20px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .info-text {
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #007BFF;
+            color: #FF65FF;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Skills Section */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .skill {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Projects */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .card-front {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-back {
+            background-color: #007BFF;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card-inner:hover {
+            transform: rotateY(180deg);
+        }
+
+        /* Education */
+        .education-tree {
+            background-color: rgba(255, 101, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .education-tree ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .education-tree li {
+            margin: 20px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .education-tree li::before {
+            content: "";
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 15px;
+            height: 100%;
+            border-left: 2px solid #007BFF;
+        }
+
+        .education-tree li::after {
+            content: "";
+            position: absolute;
+            left: 15px;
+            top: 20px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(255, 101, 255, 0.8);
+        }
+
+        .education-tree h3 {
+            margin: 0;
+            font-size: 18px;
+            background-color: #5AEBFE;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .education-tree p {
+            margin: 5px 0;
+            color: #fff;
+        }
+
+        .education-tree ul ul {
+            padding-left: 20px;
+        }
+
+        .education-tree ul ul li::before {
+            left: 30px;
+        }
+
+        /* Contact1 Section */
+        #contact1 {
+            background-color: rgba(230, 247, 255, 0.8);
+            color: #fff;
+            padding: 60px 20px;
+        }
+
+        .contact-info div {
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .contact-form button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .heart {
+            color: #ff6f61;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar ul {
                 display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .navbar.open ul {
+                display: flex;
                 flex-direction: column;
+                align-items: center;
+                background-color: #007BFF;
+                position: absolute;
+                top: 60px;
+                left: 0;
                 width: 100%;
-                text-align: center;
-                margin-top: 10px;
-                padding: 0;
             }
 
-            nav ul.active {
-                display: flex;
+            .navbar.open ul li {
+                margin: 15px 0;
             }
 
-            .menu-toggle {
-                display: block;
-                cursor: pointer;
-                font-size: 1.5em;
-                color: #007bff;
-                margin-top: 10px;
+            .education-tree li::before {
+                left: 0;
             }
 
-            .btn-download {
-                margin-top: 10px;
-            }
-        }
-
-        /* Hide menu toggle on larger screens */
-        @media (min-width: 415px) {
-            .menu-toggle {
-                display: none;
-            }
-
-            nav ul {
-                display: flex;
+            .education-tree li::after {
+                left: 0;
             }
         }
     </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">Royal_Of_Illegal</div>
-            <nav>
-                <div class="menu-toggle" onclick="toggleMenu()">☰Menu</div>
-                <ul>
-                    <li><a href="index.html" class="active">Home<spam></spam></a></li>
-                    <li><a href="About.html">About</a></li>
-                    <li><a href="projects.html">Projects<spam></spam></a></li>
-                    <li><a href="contactme.html">Contact<spam></spam></a></li>
-                    <li><a href="othersite.html">Personal#444<spam></spam></a></li>
-                </ul>
-            </nav>
-            <div class="like-container">
-                <button class="like-button" id="likeButton" onclick="incrementLike()">Like</button>
-                <span class="like-count" id="likeCount">0</span>
-            </div>
-            <a href="#" class="btn-download">Download CV</a>
-        </div>
-    </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-text">
-                <p>H43K3R</p>
-                <h1>I'm <span class="highlight">Chethan_Royalstar</span></h1>
-                <p>Soon Update page</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn-primary">Hire Me</a>
-                    <a href="#" class="btn-secondary">Download CV</a>
+<body>
+    <!-- Header1 -->
+    <div class="header1">
+        <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720065209/IMG_20240515_080836_nr89j0.jpg" alt="Logo">
+        <h1>ROYAL_OF_ILLEGAL</h1>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact1">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container1">
+            <div class="profile">
+                <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1723365025/IMG_20240811_135849_kfkrl9.jpg" alt="Profile Picture" class="profile-img">
+                <h2 class="profile-name">I'AM CHETHAN_ROYALSTAR</h2>
+                <p class="profile-title">HACKER,TECH-READER</p>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/chethan-royalstar-49750a320?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="https://www.instagram.com/royal_of_illegal?igsh=MXByOXJobmljbHlnNA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720425576/20240629_174053_a3rr4f.jpg" alt="Profile Picture">
+            </div><hr/>
+            <div class="info">
+                <h2 class="info-title">Hi, I'm Chethan_royalstar</h2>
+                <p class="info-subtitle">A passionate H4CK3R.</p>
+                <p class="info-text">I'm a passionate technology enthusiast, skilled in ethical hacking with Kali Linux and currently pursuing studies in data science. My love for innovation drives me to explore and master the digital world.</p>
+                <a href="#" class="btn">Download Resume</a>
             </div>
         </div>
     </section>
-
-    <footer>
-        <div class="conteudo">
-            <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720542925/1000014005-removebg-preview_1_ebam6n.png" alt="BIMO">
-            <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720543296/1000013995-removebg-preview_bqhumz.png" alt="B">
-            <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720543296/1000013996-removebg-preview_zr2qxd.png" alt="I">
-            <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720543296/1000013997-removebg-preview_kegjqg.png" alt="M">
-            <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720543296/1000013998-removebg-preview_1_pkp2xj.png" alt="O">
-        </div>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.instagram.com/royal_of_illegal?igsh=Ynprd3BubXB1bmd4">Instagram⬅click</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">Twitter</a>
+<hr/>
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container2">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">KALILINUX</div>
+                <div class="skill">C,C++</div>
+                <div class="skill">PARROT os</div>
+                <div class="skill">Git</div>
+                <div class="skill">TERMUX</div>
             </div>
         </div>
+    </section>
+<hr/>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container2">
+            <h2>Projects</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front" style="background-image: url('https://via.placeholder.com/200');">
+                        </div>
+                        <div class="card-back">
+                            <h3>Project 1</h3>
+                            <p>Description of Project 1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front" style="background-image: url('https://via.placeholder.com/200');">
+                        </div>
+                        <div class="card-back">
+                            <h3>Project 2</h3>
+                            <p>Description of Project 2</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more cards as needed -->
+            </div>
+        </div>
+    </section>
+<hr/>
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container2">
+            <h2>Education</h2>
+            <div class="education-tree">
+                <ul>
+                    <li>
+                        <h3>University Degree</h3>
+                        <p>XYZ University, 2016 - 2020</p>
+                        <ul>
+                            <li>
+                                <h3>Coursework</h3>
+                                <p>Web Development, Computer Science</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>High School Diploma</h3>
+                        <p>ABC High School, 2012 - 2016</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+<hr/>
+    <!-- Contact1 Section -->
+    <section id="contact1">
+        <div class="container2">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <div>Email: <a href="kalkithedarkwar@gmail.com">kalkithedarkwar@gmail.com</a></div>
+                <div>Phone: +91 </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+<hr/>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with <i class="fas fa-heart heart"></i> by royalstar bimo</p>
     </footer>
-
+<hr/>
     <script>
-        function toggleMenu() {
-            const navUl = document.querySelector('nav ul');
-            navUl.classList.toggle('active');
-        }
+        const hamburger = document.querySelector('.hamburger');
+        const navbar = document.querySelector('.navbar');
 
-        let likeCount = parseInt(localStorage.getItem('likeCount')) || 0;
-
-        function incrementLike() {
-            likeCount++;
-            localStorage.setItem('likeCount', likeCount);
-            document.getElementById('likeCount').textContent = likeCount;
-            const likeButton = document.getElementById('likeButton');
-            likeButton.disabled = true;
-            likeButton.textContent = "Liked";
-        }
-
-        // On page load, retrieve and display the stored like count
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('likeCount').textContent = likeCount;
+        hamburger.addEventListener('click', () => {
+            navbar.classList.toggle('open');
         });
     </script>
 </body>
+
 </html>
