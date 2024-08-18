@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Maintenance</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            background-size: 600% 600%;
+            animation: gradient 10s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .back{
+          align-item:center;
+          color:blue;
+        }
+      
+
+        @keyframes gradient {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .maintenance-container {
+            z-index: 1;
+        }
+
+        h1, p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="maintenance-container">
+        <h1>THE SITE UNDER MAINTENANCE NOW</h1>
+        <p>BUILDING THE SITE. COME AGAIN LATER.</p>
+    </div>
+  <button class="back"><a href="next.html">BACK<\a></button>
+</body>
+</html>
