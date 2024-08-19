@@ -16,13 +16,13 @@
             height: 640px;
             margin: 50px auto;
             padding: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             border-radius: 25px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             position: relative;
             overflow: hidden;
             z-index: 2;
-            animation: rainbow 5s linear infinite;
+            animation: rainbow 8s linear infinite;
         }
         .phone-logo {
             position: absolute;
@@ -33,6 +33,24 @@
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
+            z-index: 2;
+        }
+        .phone-logo::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #ff0000, #00ff00, #0000ff, #ffff00, #ff0000);
+            animation: spin 2s linear infinite;
+            z-index: -1;
+            box-sizing: border-box;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .title {
             position: absolute;
@@ -53,7 +71,7 @@
         }
         .app-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             grid-gap: 15px;
             margin-top: 120px;
             padding: 10px;
@@ -65,13 +83,13 @@
             align-items: center;
             color: white;
             text-align: center;
-            width: 100px; /* Fixed width */
+            width: 100px;
             position: relative;
             overflow: hidden;
         }
         .app-icon img {
-            width: 100px; /* Ensure icons fit */
-            height: 100px; /* Same as width for consistency */
+            width: 100px;
+            height: 100px;
             background-color: #333;
             border-radius: 10px;
             position: relative;
@@ -84,8 +102,8 @@
             left: -100%;
             width: 300%;
             height: 300%;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.4) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.4) 75%);
-            opacity: 0.6;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 75%);
+            opacity: 0.3;
             transform: rotate(30deg);
             animation: shine 1.5s infinite;
             z-index: 2;
@@ -95,9 +113,8 @@
             100% { transform: translateX(100%) rotate(30deg); }
         }
         .app-icon span {
-            margin-top: 5px; /* Adjust spacing between image and text */
+            margin-top: 5px;
         }
-        /* Matrix-style background */
         .matrix-background {
             position: absolute;
             top: 0;
@@ -106,9 +123,8 @@
             height: 100%;
             background: url('https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720322091/13.speed-internet-technology-background_qwylnc.jpg'), #000;
             z-index: 1;
-            opacity: 0.3;
+            opacity: 0.2;
         }
-        /* Matrix-style text animation */
         .matrix-text {
             position: absolute;
             top: 0;
@@ -125,53 +141,87 @@
             100% { transform: translateY(100%); }
         }
         @keyframes rainbow {
-            0% { background-color: #ff0000; } /* Red */
-            14% { background-color: #ff7f00; } /* Orange */
-            28% { background-color: #ffff00; } /* Yellow */
-            42% { background-color: #00ff00; } /* Green */
-            57% { background-color: #0000ff; } /* Blue */
-            71% { background-color: #4b0082; } /* Indigo */
-            85% { background-color: #9400d3; } /* Violet */
-            100% { background-color: #ff0000; } /* Back to Red */
+            0% { background-color: #660000; }
+            14% { background-color: #995700; }
+            28% { background-color: #999900; }
+            42% { background-color: #006600; }
+            57% { background-color: #000066; }
+            71% { background-color: #330066; }
+            85% { background-color: #660066; }
+            100% { background-color: #660000; }
         }
-        /* Button Styles */
         .button-link {
             display: inline-block;
-            width: 100px; /* Fixed width */
-            height: 40px; /* Fixed height */
-            line-height: 40px; /* Align text vertically */
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
             color: white;
-            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
-            background-size: 400% 400%;
+            background: #660000;
             border: none;
             border-radius: 15px;
             text-decoration: none;
             font-size: 16px;
             text-align: center;
-            transition: transform 0.3s;
-            box-sizing: border-box; /* Include padding and border in width and height */
-            animation: rainbow-button-bg 5s linear infinite, rainbow-button-text 5s linear infinite;
-        }
-        @keyframes rainbow-button-bg {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
-        }
-        @keyframes rainbow-button-text {
-            0% { color: #ff0000; } /* Red */
-            14% { color: #ff7f00; } /* Orange */
-            28% { color: #ffff00; } /* Yellow */
-            42% { color: #00ff00; } /* Green */
-            57% { color: #0000ff; } /* Blue */
-            71% { color: #4b0082; } /* Indigo */
-            85% { color: #9400d3; } /* Violet */
-            100% { color: #ff0000; } /* Back to Red */
+            transition: background-color 0.3s, color 0.3s;
+            box-sizing: border-box;
         }
         .button-link:hover {
+            background-color: #006600;
+            color: #ffffff;
             transform: scale(1.05);
         }
         .button-link:active {
             background-color: #d8e620;
+            color: #000000;
         }
+        .circle-menu {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #660000;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .menu-toggle {
+            font-size: 32px;
+            color: white;
+            line-height: 0;
+        }
+        .menu-items {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            pointer-events: none;
+        }
+        .menu-item {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #006600;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .menu-item:nth-child(1) { top: 0; left: 50%; transform: translate(-50%, -50%); }
+        .menu-item:nth-child(2) { top: 50%; left: 100%; transform: translate(-50%, -50%); }
+        .menu-item:nth-child(3) { top: 100%; left: 50%; transform: translate(-50%, -50%); }
+        .menu-item:nth-child(4) { top: 50%; left: 0%; transform: translate(-50%, -50%); }
     </style>
 </head>
 <body>
@@ -197,17 +247,28 @@
         <div class="app-icon">
             <img src="" alt="Internet">
             <span><a href="#" class="button-link">404</a></span>
-        </div><br>
+        </div>
         <div class="app-icon">
             <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1723997771/1000019518-removebg-preview_bzdu3h.png" alt="Internet">
             <span><a href="login1.html" class="button-link">Goal's</a></span>
+        </div>
+    </div>
+
+    <!-- Circle Menu Toggle -->
+    <div class="circle-menu">
+        <div class="menu-toggle">+</div>
+        <div class="menu-items">
+            <a href="myslef.html" class="menu-item">About Me</a>
+            <a href="login.html" class="menu-item">Plans</a>
+            <a href="#" class="menu-item">404</a>
+            <a href="login1.html" class="menu-item">Goals</a>
         </div>
     </div>
 </div>
 
 <div class="matrix-background"></div>
 <div class="matrix-text">
-    <p>The is maintained by bimo the royalstar...</p>
+    <p>This is maintained by bimo the royalstar...</p>
 </div>
 
 <script>
@@ -221,6 +282,28 @@
 
     setInterval(updateTime, 1000);
     updateTime();
+
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        const circleMenu = document.querySelector('.circle-menu');
+        const menuItems = circleMenu.querySelector('.menu-items');
+        const menuItemsVisibility = getComputedStyle(menuItems).display;
+
+        if (menuItemsVisibility === 'none') {
+            // Show menu items
+            menuItems.style.display = 'block';
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.style.opacity = 1;
+                item.style.pointerEvents = 'auto';
+            });
+        } else {
+            // Hide menu items
+            menuItems.style.display = 'none';
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.style.opacity = 0;
+                item.style.pointerEvents = 'none';
+            });
+        }
+    });
 </script>
 
 </body>
