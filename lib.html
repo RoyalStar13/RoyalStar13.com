@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Input styling */
+        input[type="text"], input[type="url"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Book list styling */
+        .book-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .book-item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .book-item span {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        /* Search bar styling */
+        #searchBar {
+            width: calc(100% - 24px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Suggestions dropdown styling */
+        #suggestions {
+            border: 1px solid #ccc;
+            border-top: none;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #fff;
+            display: none;
+            position: absolute;
+            width: calc(100% - 42px); /* Adjust based on padding and border */
+            z-index: 1000;
+        }
+
+        /* Each suggestion item */
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        /* Highlight on hover */
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Book Library</h2>
+        
+        <!-- Add Book Form -->
+        <input type="text" id="bookTitle" placeholder="Enter book title">
+        <input type="text" id="bookAuthor" placeholder="Enter book author">
+        <input type="url" id="bookLink" placeholder="Enter PDF link">
+        <button id="addBookButton">Add Book</button>
+        
+        <!-- Search Bar -->
+        <input type="text" id="searchBar" placeholder="Search for a book...">
+        <div id="suggestions"></div>
+        
+        <!-- Book List -->
+        <ul id="bookList" class="book-list"></ul>
+    </div>
+
+    <script>
+        const books = [];
+
+        // Function to add a book to the list
+        function addBook(title, author, link) {
+            books.push({ title, author, link });
+            displayBooks();
+        }
+
+        // Function to display all books
+        function displayBooks() {
+            const bookList = document.getElementById('bookList');
+            bookList.innerHTML = '';
+            books.forEach((book, index) => {
+                const bookItem = document.createElement('li');
+                bookItem.className = 'book-item';
+                bookItem.innerHTML = `<span>${book.title} by ${book.author}</span>
+                                      <a href="${book.link}" target="_blank">View PDF</a>`;
+                bookList.appendChild(bookItem);
+            });
+        }
+
+        // Event listener for adding a book
+        document.getElementById('addBookButton').addEventListener('click', function() {
+            const title = document.getElementById('bookTitle').value;
+            const author = document.getElementById('bookAuthor').value;
+            const link = document.getElementById('bookLink').value;
+            if (title && author && link) {
+                addBook(title, author, link);
+                document.getElementById('bookTitle').value = '';
+                document.getElementById('bookAuthor').value = '';
+                document.getElementById('bookLink').value = '';
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+
+        // Search bar event listener
+        document.getElementById('searchBar').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const suggestionsDiv = document.getElementById('suggestions');
+            suggestionsDiv.innerHTML = ''; // Clear previous suggestions
+            if (query.length > 2) {
+                const filteredBooks = books.filter(book => book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query));
+                filteredBooks.forEach(book => {
+                    const div = document.createElement('div');
+                    div.className = 'suggestion-item';
+                    div.textContent = `${book.title} by ${book.author}`;
+                    div.addEventListener('click', function() {
+                        alert(`You selected: ${book.title}`);
+                        document.getElementById('searchBar').value = book.title;
+                        suggestionsDiv.style.display = 'none';
+                    });
+                    suggestionsDiv.appendChild(div);
+                });
+                suggestionsDiv.style.display = 'block';
+            } else {
+                suggestionsDiv.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
