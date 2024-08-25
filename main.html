@@ -18,7 +18,7 @@
             padding: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             border-radius: 25px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.6) url('https://example.com/your-background-image.jpg') no-repeat center center / cover;
             position: relative;
             overflow: hidden;
             z-index: 2;
@@ -174,6 +174,31 @@
             background-color: #d8e620;
             color: #000000;
         }
+        .gray-button {
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            color: white;
+            background: gray;
+            border: none;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        .gray-button:hover {
+            background-color: #555;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+        .gray-button:active {
+            background-color: #333;
+            color: #ffffff;
+        }
         .circle-menu {
             position: absolute;
             bottom: 30px;
@@ -222,89 +247,109 @@
         .menu-item:nth-child(2) { top: 50%; left: 100%; transform: translate(-50%, -50%); }
         .menu-item:nth-child(3) { top: 100%; left: 50%; transform: translate(-50%, -50%); }
         .menu-item:nth-child(4) { top: 50%; left: 0%; transform: translate(-50%, -50%); }
+        .login-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-button:hover {
+            background-color: #555;
+        }
+        .current-time {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
-
-<div class="phone-container">
-    <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720065209/IMG_20240515_080836_nr89j0.jpg" alt="Logo" class="phone-logo">
-    <div class="title"><a href="mysite.html" class="button-link">royal_of_illegal</a></div>
-    
-    <div class="status-bar">
-        <span id="time">--:--</span>
-        <span>98%</span>
+    <div class="matrix-background"></div>
+    <div class="matrix-text">Hello welcome the world of RoyalStar</div>
+    <div class="phone-container">
+        <img class="phone-logo" src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720065209/IMG_20240515_080836_nr89j0.jpg" alt="royalstar logo">
+        <div class="status-bar">
+            <span>99%</span>
+            <span>5G</span>
+        </div>
+        <div class="title">Phone Title</div>
+        <div class="app-grid">
+            <div class="app-icon">
+                <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720425576/20240629_174053_a3rr4f.jpg" alt="App 1">
+                <span>RoyalStar</span>
+                <a href="myslef.html" class="gray-button">Portfolio</a>
+            </div>
+            <div class="app-icon">
+                <img src="https://via.placeholder.com/100" alt="App 2">
+                <span>404</span>
+                <a href="#" class="gray-button">404</a>
+            </div>
+            <div class="app-icon">
+                <img src="https://via.placeholder.com/100" alt="App 3">
+                <span>404</span>
+                <a href="#" class="gray-button">404</a>
+            </div>
+            <div class="app-icon">
+                <img src="https://via.placeholder.com/100" alt="App 4">
+                <span>404</span>
+                <a href="#" class="gray-button">404</a>
+            </div>
+            <div class="app-icon">
+                <img src="https://via.placeholder.com/100" alt="App 5">
+                <span>404</span>
+                <a href="#" class="gray-button">404</a>
+            </div>
+            <div class="app-icon">
+                <img src="https://via.placeholder.com/100" alt="App 6">
+                <span>404</span>
+                <a href="#" class="gray-button">404</a>
+            </div>
+        </div>
+        <div class="current-time" id="current-time">00:00:00</div>
+        <button class="login-button">Login</button>
+        <div class="circle-menu">
+            <div class="menu-toggle">+</div>
+            <div class="menu-items">
+                <a href="myslef.html" class="menu-item">1</a>
+                <a href="#" class="menu-item">2</a>
+                <a href="#" class="menu-item">3</a>
+                <a href="#" class="menu-item">4</a>
+            </div>
+        </div>
     </div>
+    <script>
+        // Function to update the current time every second
+function updateTime() {
+    const now = new Date();
+    const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+    const timeString = now.toLocaleTimeString([], options);
+    document.getElementById('current-time').textContent = timeString; // Corrected line
+}
 
-    <div class="app-grid">
-        <div class="app-icon">
-            <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1723987410/about-me-icon-11_kazqi5.png" alt="ABOUT ME">
-            <span><a href="myslef.html" class="button-link">About Me</a></span>
-        </div>
-        <div class="app-icon">
-            <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1723997771/1000019519-removebg-preview_p4by46.png" alt="Plans">
-            <span><a href="login.html" class="button-link">PLANS</a></span>
-        </div>
-        <div class="app-icon">
-            <img src="" alt="Internet">
-            <span><a href="lib.html" class="button-link">Books</a></span>
-        </div>
-        <div class="app-icon">
-            <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1723997771/1000019518-removebg-preview_bzdu3h.png" alt="Internet">
-            <span><a href="login1.html" class="button-link">Goal's</a></span>
-        </div>
-    </div>
-
-    <!-- Circle Menu Toggle -->
-    <div class="circle-menu">
-        <div class="menu-toggle">+</div>
-        <div class="menu-items">
-            <a href="myslef.html" class="menu-item">About Me</a>
-            <a href="login.html" class="menu-item">Plans</a>
-            <a href="lib.html" class="menu-item">books</a>
-            <a href="login1.html" class="menu-item">Goals</a>
-        </div>
-    </div>
-</div>
-
-<div class="matrix-background"></div>
-<div class="matrix-text">
-    <p>This is maintained by bimo the royalstar...</p>
-</div>
-
-<script>
-    function updateTime() {
-        const timeElement = document.getElementById('time');
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        timeElement.textContent = `${hours}:${minutes}`;
-    }
-
-    setInterval(updateTime, 1000);
-    updateTime();
-
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-        const circleMenu = document.querySelector('.circle-menu');
-        const menuItems = circleMenu.querySelector('.menu-items');
-        const menuItemsVisibility = getComputedStyle(menuItems).display;
-
-        if (menuItemsVisibility === 'none') {
-            // Show menu items
-            menuItems.style.display = 'block';
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.style.opacity = 1;
-                item.style.pointerEvents = 'auto';
+setInterval(updateTime, 1000); // Update time every second
+        document.querySelector('.circle-menu').addEventListener('click', function() {
+            const menuItems = document.querySelector('.menu-items');
+            const menuItem = document.querySelectorAll('.menu-item');
+            menuItems.style.display = menuItems.style.display === 'block' ? 'none' : 'block';
+            menuItem.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = menuItems.style.display === 'block' ? '1' : '0';
+                    item.style.pointerEvents = menuItems.style.display === 'block' ? 'auto' : 'none';
+                    item.style.transform = menuItems.style.display === 'block' ? 'translate(0, 0)' : 'translate(-50%, -50%)';
+                }, index * 100);
             });
-        } else {
-            // Hide menu items
-            menuItems.style.display = 'none';
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.style.opacity = 0;
-                item.style.pointerEvents = 'none';
-            });
-        }
-    });
-</script>
-
+        });
+    </script>
 </body>
 </html>
