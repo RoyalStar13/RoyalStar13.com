@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Interface Webpage</title>
+    <title>Mobile Interface Webpage by RoyalStar</title>
     <style>
         body {
             margin: 0;
@@ -199,6 +199,44 @@
             background-color: #333;
             color: #ffffff;
         }
+        .conteudo {
+    display: inline-flex;
+    border-bottom: 4px solid #EFEFEF;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.conteudo img {
+    width: 60px;
+    filter: drop-shadow(0px 0px 1px #4b4b50);
+    animation: flutuar 3s linear infinite;
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-23px);
+    }
+}
+
+.conteudo img:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.conteudo img:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.conteudo img:nth-child(4) {
+    animation-delay: .6s;
+}
+
+.conteudo img:nth-child(5) {
+    animation-delay: .85s;
+}
+
         .circle-menu {
             position: absolute;
             bottom: 30px;
@@ -256,13 +294,13 @@
             border: none;
             border-radius: 10px;
             font-size: 16px;
-            background-color: #333;
-            color: white;
+            background-color: #555;
+            color: #ffffff;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         .login-button:hover {
-            background-color: #555;
+            background-color: #333;
         }
         .current-time {
             position: absolute;
@@ -326,8 +364,16 @@
                 <a href="#" class="menu-item">3</a>
                 <a href="#" class="menu-item">4</a>
             </div>
-        </div>
+        </div></br></br></br>
+          <div class="conteudo">
+        <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720542925/1000014005-removebg-preview_1_ebam6n.png" alt="Royal eagle">
+        <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720543296/1000013995-removebg-preview_bqhumz.png" alt="B From BIMO">
+        <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720543296/1000013996-removebg-preview_zr2qxd.png" alt="I From BIMO">
+        <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720543296/1000013997-removebg-preview_kegjqg.png" alt="M From BIMO">
+        <img src="https://res.cloudinary.com/dl8dmkhmv/image/upload/v1720543296/1000013998-removebg-preview_1_pkp2xj.png" alt="O From BIMO">
     </div>
+    </div>
+
     <script>
         // Function to update the current time every second
 function updateTime() {
