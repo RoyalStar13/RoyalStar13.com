@@ -25,7 +25,7 @@
         }
 
         /* Input styling */
-        input[type="text"], input[type="url"] {
+        input[type="text"], input[type="file"] {
             width: calc(100% - 24px);
             padding: 10px;
             margin-bottom: 10px;
@@ -71,40 +71,6 @@
             flex-grow: 1;
             margin-right: 10px;
         }
-
-        /* Search bar styling */
-        #searchBar {
-            width: calc(100% - 24px);
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        /* Suggestions dropdown styling */
-        #suggestions {
-            border: 1px solid #ccc;
-            border-top: none;
-            max-height: 200px;
-            overflow-y: auto;
-            background-color: #fff;
-            display: none;
-            position: absolute;
-            width: calc(100% - 42px); /* Adjust based on padding and border */
-            z-index: 1000;
-        }
-
-        /* Each suggestion item */
-        .suggestion-item {
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        /* Highlight on hover */
-        .suggestion-item:hover {
-            background-color: #f0f0f0;
-        }
     </style>
 </head>
 <body>
@@ -115,12 +81,8 @@
         <!-- Add Book Form -->
         <input type="text" id="bookTitle" placeholder="Enter book title">
         <input type="text" id="bookAuthor" placeholder="Enter book author">
-        <input type="url" id="bookLink" placeholder="Enter PDF link">
+        <input type="file" id="bookFile" placeholder="Choose PDF file">
         <button id="addBookButton">Add Book</button>
-        
-        <!-- Search Bar -->
-        <input type="text" id="searchBar" placeholder="Search for a book...">
-        <div id="suggestions"></div>
         
         <!-- Book List -->
         <ul id="bookList" class="book-list"></ul>
@@ -129,8 +91,30 @@
     <script>
         const books = JSON.parse(localStorage.getItem('books')) || [];
 
+        // Cloudinary configuration (public credentials)
+        const cloudName = 'chethan chethan';  // Replace with your Cloudinary cloud name
+        const uploadPreset = 'your-upload-preset';  // Replace with your Cloudinary unsigned upload preset
+
+        // Function to upload file to Cloudinary
+        function uploadToCloudinary(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', uploadPreset);
+
+            return fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => data.secure_url)
+            .catch(error => {
+                console.error('Error uploading to Cloudinary:', error);
+            });
+        }
+
         // Function to add a book to the list
-        function addBook(title, author, link) {
+        async function addBook(title, author, file) {
+            const link = await uploadToCloudinary(file);
             books.push({ title, author, link });
             localStorage.setItem('books', JSON.stringify(books)); // Save books to local storage
             displayBooks();
@@ -153,38 +137,16 @@
         document.getElementById('addBookButton').addEventListener('click', function() {
             const title = document.getElementById('bookTitle').value;
             const author = document.getElementById('bookAuthor').value;
-            const link = document.getElementById('bookLink').value;
-            if (title && author && link) {
-                addBook(title, author, link);
+            const fileInput = document.getElementById('bookFile');
+            const file = fileInput.files[0];
+
+            if (title && author && file) {
+                addBook(title, author, file);
                 document.getElementById('bookTitle').value = '';
                 document.getElementById('bookAuthor').value = '';
-                document.getElementById('bookLink').value = '';
+                fileInput.value = ''; // Clear file input
             } else {
                 alert('Please fill in all fields');
-            }
-        });
-
-        // Search bar event listener
-        document.getElementById('searchBar').addEventListener('input', function() {
-            const query = this.value.toLowerCase();
-            const suggestionsDiv = document.getElementById('suggestions');
-            suggestionsDiv.innerHTML = ''; // Clear previous suggestions
-            if (query.length > 2) {
-                const filteredBooks = books.filter(book => book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query));
-                filteredBooks.forEach(book => {
-                    const div = document.createElement('div');
-                    div.className = 'suggestion-item';
-                    div.textContent = `${book.title} by ${book.author}`;
-                    div.addEventListener('click', function() {
-                        alert(`You selected: ${book.title}`);
-                        document.getElementById('searchBar').value = book.title;
-                        suggestionsDiv.style.display = 'none';
-                    });
-                    suggestionsDiv.appendChild(div);
-                });
-                suggestionsDiv.style.display = 'block';
-            } else {
-                suggestionsDiv.style.display = 'none';
             }
         });
 
